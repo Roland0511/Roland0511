@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>LivingStone</title>
+  <subtitle>coding like poetry</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://Roland0511.coding.me/"/>
+  <updated>2016-12-17T17:14:07.000Z</updated>
+  <id>http://Roland0511.coding.me/</id>
+  
+  <author>
+    <name>lizhou.zhu</name>
+    <email>rolandlivingstone@foxmail.com</email>
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hexo 简单操作</title>
+    <link href="http://Roland0511.coding.me/2016/12/18/hello-world/"/>
+    <id>http://Roland0511.coding.me/2016/12/18/hello-world/</id>
+    <published>2016-12-17T16:10:03.000Z</published>
+    <updated>2016-12-17T17:14:07.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>部署博客的时候遇到的一些坑</title>
+    <link href="http://Roland0511.coding.me/2016/12/18/hexo-problems/"/>
+    <id>http://Roland0511.coding.me/2016/12/18/hexo-problems/</id>
+    <published>2016-12-17T16:10:03.000Z</published>
+    <updated>2016-12-17T16:10:03.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Hexo-主题无法正确显示"><a href="#Hexo-主题无法正确显示" class="headerlink" title="Hexo 主题无法正确显示"></a>Hexo 主题无法正确显示</h2><p>#如果是使用git进行部署的，需要在静态站点映射的仓库下添加一个[.nojekyll]文件。来禁止使用jekyll。</p>
+<p>#确保git项目仓库名称和用户id一致，否则会导致css文件无法正确加载，*无论是用github pages还是coding pages。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Hexo-主题无法正确显示&quot;&gt;&lt;a href=&quot;#Hexo-主题无法正确显示&quot; class=&quot;headerlink&quot; title=&quot;Hexo 主题无法正确显示&quot;&gt;&lt;/a&gt;Hexo 主题无法正确显示&lt;/h2&gt;&lt;p&gt;#如果是使用git进行部署的，需要在静态站点映射的仓
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
