@@ -4,9 +4,9 @@
   <subtitle>coding like poetry</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://Roland0511.coding.me/"/>
+  <link href="http://azhu.tech/"/>
   <updated>2016-12-17T17:14:07.000Z</updated>
-  <id>http://Roland0511.coding.me/</id>
+  <id>http://azhu.tech/</id>
   
   <author>
     <name>lizhou.zhu</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>Hexo 简单操作</title>
-    <link href="http://Roland0511.coding.me/2016/12/18/hello-world/"/>
-    <id>http://Roland0511.coding.me/2016/12/18/hello-world/</id>
+    <link href="http://azhu.tech/2016/12/18/hello-world/"/>
+    <id>http://azhu.tech/2016/12/18/hello-world/</id>
     <published>2016-12-17T16:10:03.000Z</published>
     <updated>2016-12-17T17:14:07.000Z</updated>
     
@@ -44,8 +44,8 @@
   
   <entry>
     <title>部署博客的时候遇到的一些坑</title>
-    <link href="http://Roland0511.coding.me/2016/12/18/hexo-problems/"/>
-    <id>http://Roland0511.coding.me/2016/12/18/hexo-problems/</id>
+    <link href="http://azhu.tech/2016/12/18/hexo-problems/"/>
+    <id>http://azhu.tech/2016/12/18/hexo-problems/</id>
     <published>2016-12-17T16:10:03.000Z</published>
     <updated>2016-12-17T16:10:03.000Z</updated>
     
