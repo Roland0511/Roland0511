@@ -273,7 +273,15 @@
 <script src="/js/embed.min.js?v=1.3.2"></script>
 <script src="//cdn.bootcss.com/marked/0.3.6/marked.min.js" async="async"></script>
 <script>
-var duoshuoQuery = {short_name:'azhutech', theme: 'none'}
+var duoshuoQuery = {short_name:'azhutech', theme: 'none'};
+(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
 </script>
 
 
