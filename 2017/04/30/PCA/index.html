@@ -5,23 +5,24 @@
   
   
   
-  <title>部署博客的时候遇到的一些坑 | LivingStone | coding like poetry</title>
+  <title>Principal Component Analysis(主成分分析法) | LivingStone | coding like poetry</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   <meta name="theme-color" content="#3F51B5">
   
   
-  <meta name="keywords" content="">
-  <meta name="description" content="Hexo 主题无法正确显示#如果是使用git进行部署的，需要在静态站点映射的仓库下添加一个[.nojekyll]文件。来禁止使用jekyll。 #确保git项目仓库名称和用户id一致，否则会导致css文件无法正确加载，无论是用github pages还是coding pages。 Test Math $$x = z*b$$ $ a = b + c $">
+  <meta name="keywords" content="Machine Learning">
+  <meta name="description" content="简介Principal Component Analysis(主成分分析法)是机器学习中一种常用的一种线性降维算法。 算法流程 数据预处理 准备训练集:\(x^{(1)},x^{(2)},…x^{(m)}\) Feature scaling(特征缩放)/ mean normalization(平均归一化)：$$\begin{aligned} \mu_j=\frac 1 m\sum_{i=1}^mx">
+<meta name="keywords" content="Machine Learning">
 <meta property="og:type" content="article">
-<meta property="og:title" content="部署博客的时候遇到的一些坑">
-<meta property="og:url" content="http://azhu.tech/2017/04/06/hexo-problems/index.html">
+<meta property="og:title" content="Principal Component Analysis(主成分分析法)">
+<meta property="og:url" content="http://azhu.tech/2017/04/30/PCA/index.html">
 <meta property="og:site_name" content="LivingStone">
-<meta property="og:description" content="Hexo 主题无法正确显示#如果是使用git进行部署的，需要在静态站点映射的仓库下添加一个[.nojekyll]文件。来禁止使用jekyll。 #确保git项目仓库名称和用户id一致，否则会导致css文件无法正确加载，无论是用github pages还是coding pages。 Test Math $$x = z*b$$ $ a = b + c $">
-<meta property="og:updated_time" content="2017-04-06T01:52:14.000Z">
+<meta property="og:description" content="简介Principal Component Analysis(主成分分析法)是机器学习中一种常用的一种线性降维算法。 算法流程 数据预处理 准备训练集:\(x^{(1)},x^{(2)},…x^{(m)}\) Feature scaling(特征缩放)/ mean normalization(平均归一化)：$$\begin{aligned} \mu_j=\frac 1 m\sum_{i=1}^mx">
+<meta property="og:updated_time" content="2017-04-30T08:45:25.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="部署博客的时候遇到的一些坑">
-<meta name="twitter:description" content="Hexo 主题无法正确显示#如果是使用git进行部署的，需要在静态站点映射的仓库下添加一个[.nojekyll]文件。来禁止使用jekyll。 #确保git项目仓库名称和用户id一致，否则会导致css文件无法正确加载，无论是用github pages还是coding pages。 Test Math $$x = z*b$$ $ a = b + c $">
+<meta name="twitter:title" content="Principal Component Analysis(主成分分析法)">
+<meta name="twitter:description" content="简介Principal Component Analysis(主成分分析法)是机器学习中一种常用的一种线性降维算法。 算法流程 数据预处理 准备训练集:\(x^{(1)},x^{(2)},…x^{(m)}\) Feature scaling(特征缩放)/ mean normalization(平均归一化)：$$\begin{aligned} \mu_j=\frac 1 m\sum_{i=1}^mx">
   
     <link rel="alternative" href="/atom.xml" title="LivingStone" type="application/atom+xml">
   
@@ -106,7 +107,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">部署博客的时候遇到的一些坑</div>
+        <div class="flex-col header-title ellipsis">Principal Component Analysis(主成分分析法)</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -128,11 +129,11 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">部署博客的时候遇到的一些坑</h1>
+        <h1 class="title">Principal Component Analysis(主成分分析法)</h1>
         <h5 class="subtitle">
             
-                <time datetime="2017-04-06T01:52:14.000Z" itemprop="datePublished" class="page-time">
-  2017-04-06
+                <time datetime="2017-04-30T06:15:05.000Z" itemprop="datePublished" class="page-time">
+  2017-04-30
 </time>
 
 
@@ -151,18 +152,18 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Hexo-主题无法正确显示"><span class="post-toc-number">1.</span> <span class="post-toc-text">Hexo 主题无法正确显示</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Test-Math"><span class="post-toc-number">2.</span> <span class="post-toc-text">Test Math</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">简介</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#算法流程"><span class="post-toc-number">2.</span> <span class="post-toc-text">算法流程</span></a></li></ol>
         </nav>
     </aside>
     
-<article id="post-hexo-problems"
+<article id="post-PCA"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">部署博客的时候遇到的一些坑</h1>
+        <h1 class="post-card-title">Principal Component Analysis(主成分分析法)</h1>
         <div class="post-meta">
-            <time datetime="2017-04-06T01:52:14.000Z" itemprop="datePublished" class="post-time">
-  2017-04-06
+            <time datetime="2017-04-30T06:15:05.000Z" itemprop="datePublished" class="post-time">
+  2017-04-30
 </time>
 
             
@@ -170,17 +171,23 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h2 id="Hexo-主题无法正确显示"><a href="#Hexo-主题无法正确显示" class="headerlink" title="Hexo 主题无法正确显示"></a>Hexo 主题无法正确显示</h2><p>#如果是使用git进行部署的，需要在静态站点映射的仓库下添加一个[.nojekyll]文件。来禁止使用jekyll。</p>
-<p>#确保git项目仓库名称和用户id一致，否则会导致css文件无法正确加载，<em>无论是用github pages还是coding pages。</em></p>
-<h2 id="Test-Math"><a href="#Test-Math" class="headerlink" title="Test Math"></a>Test Math</h2><!-- ``` bash -->
-<p>$$<br>x = z*b<br>$$</p>
-<p>$ a = b + c $<br><!-- ``` --></p>
+            <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Principal Component Analysis(主成分分析法)是机器学习中一种常用的一种线性降维算法。</p>
+<h2 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h2><ul>
+<li>数据预处理<ul>
+<li>准备训练集:\(x^{(1)},x^{(2)},…x^{(m)}\)</li>
+<li>Feature scaling(特征缩放)/ mean normalization(平均归一化)：<span>$$\begin{aligned}
+\mu_j=\frac 1 m\sum_{i=1}^mx_j^{(i)}
+\end{aligned}$$</span><!-- Has MathJax -->
+<br><br>用\(x_j-\mu_j\)替换每个\(x_j^{(i)}\)<br></li>
+</ul>
+</li>
+</ul>
 
         </div>
 
         <blockquote class="post-copyright">
     <div class="content">
-        这里写留言或版权声明：<a href="/2017/04/06/hexo-problems/" target="_blank" rel="external">http://azhu.tech/2017/04/06/hexo-problems/</a>
+        这里写留言或版权声明：<a href="/2017/04/30/PCA/" target="_blank" rel="external">http://azhu.tech/2017/04/30/PCA/</a>
     </div>
     <footer>
         <a href="http://azhu.tech">
@@ -198,6 +205,8 @@
 
         <div class="post-footer">
             
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li></ul>
+
 
             
 <div class="page-share-wrap">
@@ -207,7 +216,7 @@
     <div class="tit">分享到：</div>
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://azhu.tech/2017/04/06/hexo-problems/&title=《部署博客的时候遇到的一些坑》 — LivingStone&pic=http://azhu.tech/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://azhu.tech/2017/04/30/PCA/&title=《Principal Component Analysis(主成分分析法)》 — LivingStone&pic=http://azhu.tech/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -217,22 +226,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://azhu.tech/2017/04/06/hexo-problems/&title=《部署博客的时候遇到的一些坑》 — LivingStone&source=azhu's blog" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://azhu.tech/2017/04/30/PCA/&title=《Principal Component Analysis(主成分分析法)》 — LivingStone&source=azhu's blog" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://azhu.tech/2017/04/06/hexo-problems/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://azhu.tech/2017/04/30/PCA/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《部署博客的时候遇到的一些坑》 — LivingStone&url=http://azhu.tech/2017/04/06/hexo-problems/&via=http://azhu.tech" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Principal Component Analysis(主成分分析法)》 — LivingStone&url=http://azhu.tech/2017/04/30/PCA/&via=http://azhu.tech" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://azhu.tech/2017/04/06/hexo-problems/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://azhu.tech/2017/04/30/PCA/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -252,21 +261,14 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="waves-block waves-effect prev">
-      <a href="/2017/04/06/hexo-mathjax/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">在Hexo中使用MathJax</h4>
-      </a>
-    </div>
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2017/02/28/hexo-quick-start/" id="post-next" class="post-nav-link">
+      <a href="/2017/04/30/t-SNE/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">Hexo 简单操作</h4>
+        <h4 class="title">t-SNE</h4>
       </a>
     </div>
   
@@ -280,7 +282,7 @@
     
       <!--//导入duoshuo.ejs时，同时指定其中几个变量的内容。 -->
       <div class="duoshuo" id="comments">
-	<div class="ds-thread" data-thread-key="hexo-problems" data-title="部署博客的时候遇到的一些坑" data-url="http://azhu.tech/2017/04/06/hexo-problems/"></div>
+	<div class="ds-thread" data-thread-key="PCA" data-title="Principal Component Analysis(主成分分析法)" data-url="http://azhu.tech/2017/04/30/PCA/"></div>
 </div>
 <script src="/js/embed.min.js?v=1.3.2"></script>
 <script src="//cdn.bootcss.com/marked/0.3.6/marked.min.js" async="async"></script>
@@ -334,7 +336,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true }</script>
     <div class="tit">分享到：</div>
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://azhu.tech/2017/04/06/hexo-problems/&title=《部署博客的时候遇到的一些坑》 — LivingStone&pic=http://azhu.tech/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://azhu.tech/2017/04/30/PCA/&title=《Principal Component Analysis(主成分分析法)》 — LivingStone&pic=http://azhu.tech/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -344,22 +346,22 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true }</script>
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://azhu.tech/2017/04/06/hexo-problems/&title=《部署博客的时候遇到的一些坑》 — LivingStone&source=azhu's blog" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://azhu.tech/2017/04/30/PCA/&title=《Principal Component Analysis(主成分分析法)》 — LivingStone&source=azhu's blog" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://azhu.tech/2017/04/06/hexo-problems/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://azhu.tech/2017/04/30/PCA/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《部署博客的时候遇到的一些坑》 — LivingStone&url=http://azhu.tech/2017/04/06/hexo-problems/&via=http://azhu.tech" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Principal Component Analysis(主成分分析法)》 — LivingStone&url=http://azhu.tech/2017/04/30/PCA/&via=http://azhu.tech" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://azhu.tech/2017/04/06/hexo-problems/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://azhu.tech/2017/04/30/PCA/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -370,7 +372,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true }</script>
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABzklEQVR42u3aS2rDQBAFQN//0g5kFQiW35vWDE6oWRnZskqbpn+PR3ye3+f6yu9vf/7m1ZXHjoOLizvmPi/Pq9+0rGtuYsDFxT3PvQ5erwLZ9b3XdyVBDRcX9/O5bVKShC1cXNz/xM1TooSIi4v7mdzk8W3YyolbajVcXNwBd56szD9v7O/i4uKW3Ofg5M2O/K43T8TFxT3CzVOTuwqetcFMnUnh4uIOuO04JH+ZdjCT/D8uLu4Z7trgpI2UbYCL1r9wcXG3cZPb2oWq9nqRSOHi4h7n5u3LdqkiT4aihgguLu5mbjvsXBuQtEnPYtmDi4t7K7ddnJrQ80bJGzouLu42bt4wzUugPDjW61m4uLgHuUlqsrY8MWmhRosXuLi427ij3Y2yyGlHKXVkxcXFHXPXliQmQ5G1nW1cXNyT3LVmaD4yaVc0FoesuLi4t3LzIJIHtTYgjkIqLi7uBu6zPEmhkl9PQlXUFsHFxb2VOwkrk3WrtUQKFxf3JDcfh7TrFO1INdoWwcXFPcjdHbzaCPqyfMLFxf0j3LxtmrdUNgYyXFzcW7mTkibBFTsjuLi4R7j7lrTmL1Z0eXFxcW/iTkqR5AXyR85LJlxc3DH3C5wRQ/rqMrnJAAAAAElFTkSuQmCC" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABwUlEQVR42u3aOW7EMAwFUN//0k6bFLE+yZFiBE+VMePlqSHE5bridX9bv/3y/FT12dHCxcUdc+/HlXATdHL9bMDFxT3PnX8m+Td5/8KGi4v7Sm7Oen4zLi7uf+JWw1Z+YMLFxX0bN0l+JglMfhj6WK6Gi4s74OZVyn3XW+q7uLi4Le5dXNVmSZ4CRV/HxcU9ws0DSpLY5NsbfRcXF/cIt1oc6eEiRN6+xcXF3cztBZR5SDp6xMHFxS0mP70iSHX8olc2/XEPLi7uEW6vVtkb0cg3kx+GcHFxd3DzMkevjZoPW0ShExcX94+41YNLtVyS3xMFMlxc3CPcKjQPRh8IfLi4uEe4vWLEnJIExEVPGBcXdzN30kzttUvzqkzUE8bFxd3AzQ8xvdUMVckcGS4u7mZu/qK8qFptzUaBDxcX9yC3N3BZLaAkIXJxDy4u7mbuXVyTAJdv+8ofwMXF3cCdDGY9H1CS8JQXZ8ubwcXFHXPz4FUYomqNeUWbwcXFPcitjlPk6VD1KLNImXBxcV/JrSYw1WRpsTFcXNxXcnvlknlrFhcX9zy3mqhMDj29sgsuLu5JbjWsTAofveIILi7uQe4XnjEgHqXQQjEAAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 

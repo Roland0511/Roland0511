@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://azhu.tech/"/>
-  <updated>2017-04-30T05:22:39.000Z</updated>
+  <updated>2017-04-30T08:45:25.000Z</updated>
   <id>http://azhu.tech/</id>
   
   <author>
@@ -16,14 +16,99 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Principal Component Analysis(主成分分析法)</title>
+    <link href="http://azhu.tech/2017/04/30/PCA/"/>
+    <id>http://azhu.tech/2017/04/30/PCA/</id>
+    <published>2017-04-30T06:15:05.000Z</published>
+    <updated>2017-04-30T08:45:25.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Principal Component Analysis(主成分分析法)是机器学习中一种常用的一种线性降维算法。</p>
+<h2 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h2><ul>
+<li>数据预处理<ul>
+<li>准备训练集:\(x^{(1)},x^{(2)},…x^{(m)}\)</li>
+<li>Feature scaling(特征缩放)/ mean normalization(平均归一化)：<span>$$\begin{aligned}
+\mu_j=\frac 1 m\sum_{i=1}^mx_j^{(i)}
+\end{aligned}$$</span><!-- Has MathJax -->
+<br><br>用\(x_j-\mu_j\)替换每个\(x_j^{(i)}\)<br></li>
+</ul>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;Principal Component Analysis(主成分分析法)是机器学习中一种常用的一种线性降维算法。&lt;/p&gt;
+&lt;h2 id=&quot;算
+    
+    </summary>
+    
+    
+      <category term="Machine Learning" scheme="http://azhu.tech/tags/Machine-Learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>t-SNE</title>
+    <link href="http://azhu.tech/2017/04/30/t-SNE/"/>
+    <id>http://azhu.tech/2017/04/30/t-SNE/</id>
+    <published>2017-04-30T06:14:46.000Z</published>
+    <updated>2017-04-30T06:14:46.000Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Dimensionality Reduction</title>
+    <link href="http://azhu.tech/2017/04/30/Dimensionality-Reduction/"/>
+    <id>http://azhu.tech/2017/04/30/Dimensionality-Reduction/</id>
+    <published>2017-04-30T05:31:05.000Z</published>
+    <updated>2017-04-30T06:24:48.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>##Dimensionality Reduction(维数约简/降维)</p>
+<p>###简介<br><strong>维数约简</strong>又称为<strong>降维</strong>是机器学习中的一种数据处理手段，它的主要作用有如下几点：</p>
+<ul>
+<li>数据压缩(降低内存磁盘占用，加速学习速度)</li>
+<li>去除噪声的影响</li>
+<li>从数据中提取特征以便进行分类</li>
+<li>可视化(将数据投影到2-3维空间并绘制，方便直观看到数据分布状况)</li>
+</ul>
+<p>###常用算法<br>维数约简有多种常用的算法，这里介绍两种当前比较流行的算法：</p>
+<ul>
+<li><p>PCA : <a href="/2017/04/30/PCA/" title="[Principal Component Analysis(主成分分析法)]">[Principal Component Analysis(主成分分析法)]</a></p>
+</li>
+<li><p>t-SNE ：t-Distributed Stochastic Neighbor Embedding（t-分布随机相邻嵌入法）</p>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;##Dimensionality Reduction(维数约简/降维)&lt;/p&gt;
+&lt;p&gt;###简介&lt;br&gt;&lt;strong&gt;维数约简&lt;/strong&gt;又称为&lt;strong&gt;降维&lt;/strong&gt;是机器学习中的一种数据处理手段，它的主要作用有如下几点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+    
+    </summary>
+    
+    
+      <category term="Machine Learning" scheme="http://azhu.tech/tags/Machine-Learning/"/>
+    
+  </entry>
+  
+  <entry>
     <title>在Hexo中使用MathJax</title>
     <link href="http://azhu.tech/2017/04/06/hexo-mathjax/"/>
     <id>http://azhu.tech/2017/04/06/hexo-mathjax/</id>
     <published>2017-04-06T01:52:14.000Z</published>
-    <updated>2017-04-30T05:22:39.000Z</updated>
+    <updated>2017-04-30T08:05:54.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="替换markdown-renderer"><a href="#替换markdown-renderer" class="headerlink" title="替换markdown renderer"></a>替换markdown renderer</h2><p>由于Markdown渲染器和latex渲染器冲突，公式中的特殊字符会首先被markdown渲染器转义，导致渲染错误。<br>所以首先替换hexo自带的Markdown渲染器插件。<br>这里推荐 <a href="https://github.com/sun11/hexo-renderer-kramed" target="_blank" rel="external">hexo-renderer-kramed</a> 这个插件，作者fork了 hexo-renderer-marked 项目，并且只对MathJax支持进行了改进，其他特性完全一致。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ npm uninstall hexo-renderer-marked --save</div><div class="line">$ npm install hexo-renderer-kramed --save</div></pre></td></tr></table></figure>
+<p>对于hexo 2<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ npm uninstall hexo-renderer-marked --save</div><div class="line"><span class="comment"># for hexo 2</span></div><div class="line">$ npm install hexo-renderer-kramed --save</div></pre></td></tr></table></figure></p>
+<p>对于hexo 3 的用户<br>由于npm只支持到0.1.4，需要到<a href="https://github.com/sun11/hexo-renderer-kramed" target="_blank" rel="external">hexo-renderer-kramed</a>手动clone出0.2.x的版本进行安装</p>
 <h2 id="安装MathJax"><a href="#安装MathJax" class="headerlink" title="安装MathJax"></a>安装MathJax</h2><ul>
 <li>方法1：手动修改主题使其支持mathjax<ul>
 <li>在theme的header中插入对MathJax CDN script的引用，并配置inline math</li>
@@ -43,13 +128,13 @@
 <li><p>使用：你可以直接使用 MathJax 的行内公式语法，但要记得在每个特殊符号前加一个\来将其转义。LaTeX包含大量的像\这样的特殊字符，这就给手动转义带来了极大的不便。这种情况下，你可以使用 math 的标签来让你解脱。</p>
 <ul>
 <li><p>单行标注：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$$ a = b + c $$.</div></pre></td></tr></table></figure>
-<p>效果： <script type="math/tex">a = b + c</script>.</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">\\( a = b + c \\).</div></pre></td></tr></table></figure>
+<p>效果： \( a = b + c \).</p>
 </li>
 <li><p>多行标注：</p>
   <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$$</div><div class="line">\frac&#123;\partial u&#125;&#123;\partial t&#125;</div><div class="line">= h^2 \left( \frac&#123;\partial^2 u&#125;&#123;\partial x^2&#125; +</div><div class="line">\frac&#123;\partial^2 u&#125;&#123;\partial y^2&#125; +</div><div class="line">\frac&#123;\partial^2 u&#125;&#123;\partial z^2&#125;\right)</div><div class="line">$$</div></pre></td></tr></table></figure>
-<p>效果：</p>
-<script type="math/tex; mode=display">\frac{\partial u}{\partial t}= h^2 \left( \frac{\partial^2 u}{\partial x^2} +\frac{\partial^2 u}{\partial y^2} +\frac{\partial^2 u}{\partial z^2}\right)</script></li>
+<p>效果：<br>$$\frac{\partial u}{\partial t}= h^2 \left( \frac{\partial^2 u}{\partial x^2} +\frac{\partial^2 u}{\partial y^2} +\frac{\partial^2 u}{\partial z^2}\right)$$</p>
+</li>
 <li><p>Tag：</p>
 <ul>
 <li><p>单行</p>
