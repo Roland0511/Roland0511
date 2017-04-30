@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  
+  
+  <title>在Hexo中使用MathJax | LivingStone | coding like poetry</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="theme-color" content="#3F51B5">
+  
+  
+  <meta name="keywords" content="">
+  <meta name="description" content="替换markdown renderer由于Markdown渲染器和latex渲染器冲突，公式中的特殊字符会首先被markdown渲染器转义，导致渲染错误。所以首先替换hexo自带的Markdown渲染器插件。这里推荐 hexo-renderer-kramed 这个插件，作者fork了 hexo-renderer-marked 项目，并且只对MathJax支持进行了改进，其他特性完全一致。 12$">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在Hexo中使用MathJax">
+<meta property="og:url" content="http://azhu.tech/2017/04/06/hexo-mathjax/index.html">
+<meta property="og:site_name" content="LivingStone">
+<meta property="og:description" content="替换markdown renderer由于Markdown渲染器和latex渲染器冲突，公式中的特殊字符会首先被markdown渲染器转义，导致渲染错误。所以首先替换hexo自带的Markdown渲染器插件。这里推荐 hexo-renderer-kramed 这个插件，作者fork了 hexo-renderer-marked 项目，并且只对MathJax支持进行了改进，其他特性完全一致。 12$">
+<meta property="og:updated_time" content="2017-04-30T05:22:39.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="在Hexo中使用MathJax">
+<meta name="twitter:description" content="替换markdown renderer由于Markdown渲染器和latex渲染器冲突，公式中的特殊字符会首先被markdown渲染器转义，导致渲染错误。所以首先替换hexo自带的Markdown渲染器插件。这里推荐 hexo-renderer-kramed 这个插件，作者fork了 hexo-renderer-marked 项目，并且只对MathJax支持进行了改进，其他特性完全一致。 12$">
+  
+    <link rel="alternative" href="/atom.xml" title="LivingStone" type="application/atom+xml">
+  
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/style.css?v=1.3.2"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+  <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lizhou.zhu</h5>
+          <a href="mailto:rolandlivingstone@foxmail.com" title="rolandlivingstone@foxmail.com" class="mail">rolandlivingstone@foxmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect active">
+              <a href="/"  >
+                <i class="icon icon-lg icon-book"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+
+      <footer class="footer">
+  <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC" /></a></p>
+  <p>LivingStone &copy; 2016 - 2017</p>
+  <p>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme
+  <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></p>
+  <a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-2x icon-rss-square"></i></a>
+</footer>
+
+    </div>
+  </div>
+</aside>
+
+  <main id="main">
+    <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">在Hexo中使用MathJax</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">在Hexo中使用MathJax</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-04-06T01:52:14.000Z" itemprop="datePublished" class="page-time">
+  2017-04-06
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#替换markdown-renderer"><span class="post-toc-number">1.</span> <span class="post-toc-text">替换markdown renderer</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装MathJax"><span class="post-toc-number">2.</span> <span class="post-toc-text">安装MathJax</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-hexo-mathjax"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">在Hexo中使用MathJax</h1>
+        <div class="post-meta">
+            <time datetime="2017-04-06T01:52:14.000Z" itemprop="datePublished" class="post-time">
+  2017-04-06
+</time>
+
+            
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="替换markdown-renderer"><a href="#替换markdown-renderer" class="headerlink" title="替换markdown renderer"></a>替换markdown renderer</h2><p>由于Markdown渲染器和latex渲染器冲突，公式中的特殊字符会首先被markdown渲染器转义，导致渲染错误。<br>所以首先替换hexo自带的Markdown渲染器插件。<br>这里推荐 <a href="https://github.com/sun11/hexo-renderer-kramed" target="_blank" rel="external">hexo-renderer-kramed</a> 这个插件，作者fork了 hexo-renderer-marked 项目，并且只对MathJax支持进行了改进，其他特性完全一致。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ npm uninstall hexo-renderer-marked --save</div><div class="line">$ npm install hexo-renderer-kramed --save</div></pre></td></tr></table></figure>
+<h2 id="安装MathJax"><a href="#安装MathJax" class="headerlink" title="安装MathJax"></a>安装MathJax</h2><ul>
+<li>方法1：手动修改主题使其支持mathjax<ul>
+<li>在theme的header中插入对MathJax CDN script的引用，并配置inline math</li>
+<li>在文章中用inline math插入公式</li>
+</ul>
+</li>
+<li><p>方法2：安装插件</p>
+<ul>
+<li><p>这里推荐<a href="https://github.com/akfish/hexo-math" target="_blank" rel="external">hexo-math</a>，这个插件实现了自动部署MathJax以及添加MathJax Tag。具体内容参见仓库的readme。</p>
+<ul>
+<li><p>安装：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-math --save</div></pre></td></tr></table></figure>
+</li>
+<li><p>初始化：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo math install</div></pre></td></tr></table></figure>
+</li>
+<li><p>使用：你可以直接使用 MathJax 的行内公式语法，但要记得在每个特殊符号前加一个\来将其转义。LaTeX包含大量的像\这样的特殊字符，这就给手动转义带来了极大的不便。这种情况下，你可以使用 math 的标签来让你解脱。</p>
+<ul>
+<li><p>单行标注：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$$ a = b + c $$.</div></pre></td></tr></table></figure>
+<p>效果： <script type="math/tex">a = b + c</script>.</p>
+</li>
+<li><p>多行标注：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$$</div><div class="line">\frac&#123;\partial u&#125;&#123;\partial t&#125;</div><div class="line">= h^2 \left( \frac&#123;\partial^2 u&#125;&#123;\partial x^2&#125; +</div><div class="line">\frac&#123;\partial^2 u&#125;&#123;\partial y^2&#125; +</div><div class="line">\frac&#123;\partial^2 u&#125;&#123;\partial z^2&#125;\right)</div><div class="line">$$</div></pre></td></tr></table></figure>
+<p>效果：</p>
+<script type="math/tex; mode=display">\frac{\partial u}{\partial t}= h^2 \left( \frac{\partial^2 u}{\partial x^2} +\frac{\partial^2 u}{\partial y^2} +\frac{\partial^2 u}{\partial z^2}\right)</script></li>
+<li><p>Tag：</p>
+<ul>
+<li><p>单行</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% math %&#125;\cos 2\theta = \cos^2 \theta - \sin^2 \theta =  2 \cos^2 \theta - 1 &#123;% endmath %&#125;</div></pre></td></tr></table></figure>
+  <span>$\cos 2\theta = \cos^2 \theta - \sin^2 \theta =  2 \cos^2 \theta - 1$</span><!-- Has MathJax -->
+</li>
+<li><p>多行</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123;% math %&#125;</div><div class="line">\begin&#123;aligned&#125;</div><div class="line">\dot&#123;x&#125; &amp; = \sigma(y-x) \\</div><div class="line">\dot&#123;y&#125; &amp; = \rho x - y - xz \\</div><div class="line">\dot&#123;z&#125; &amp; = -\beta z + xy</div><div class="line">\end&#123;aligned&#125;</div><div class="line">&#123;% endmath %&#125;</div></pre></td></tr></table></figure>
+  <span>$$\begin{aligned}
+\dot{x} &amp; = \sigma(y-x) \\
+\dot{y} &amp; = \rho x - y - xz \\
+\dot{z} &amp; = -\beta z + xy
+\end{aligned}$$</span><!-- Has MathJax -->
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>坑：切勿在_config.yml添加如下插件标签，如果添加了plugins标签，hexo将会不再自动搜索插件，需要自己手动将所有用到的插件添加在plugins中。</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">plugins:</div><div class="line">	- hexo-math</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        这里写留言或版权声明：<a href="/2017/04/06/hexo-mathjax/" target="_blank" rel="external">http://azhu.tech/2017/04/06/hexo-mathjax/</a>
+    </div>
+    <footer>
+        <a href="http://azhu.tech">
+            <img src="/img/avatar.jpg" alt="lizhou.zhu">
+            lizhou.zhu
+        </a>
+    </footer>
+</blockquote>
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://azhu.tech/2017/04/06/hexo-mathjax/&title=《在Hexo中使用MathJax》 — LivingStone&pic=http://azhu.tech/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://azhu.tech/2017/04/06/hexo-mathjax/&title=《在Hexo中使用MathJax》 — LivingStone&source=azhu's blog" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://azhu.tech/2017/04/06/hexo-mathjax/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《在Hexo中使用MathJax》 — LivingStone&url=http://azhu.tech/2017/04/06/hexo-mathjax/&via=http://azhu.tech" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://azhu.tech/2017/04/06/hexo-mathjax/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/04/06/hexo-problems/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">部署博客的时候遇到的一些坑</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    <!--//如果没使用 `comments: false` 关闭评论，则尝试加载评论 -->
+
+    <!--//配置中启用多说时，导入相应代码 -->
+    
+      <!--//导入duoshuo.ejs时，同时指定其中几个变量的内容。 -->
+      <div class="duoshuo" id="comments">
+	<div class="ds-thread" data-thread-key="hexo-mathjax" data-title="在Hexo中使用MathJax" data-url="http://azhu.tech/2017/04/06/hexo-mathjax/"></div>
+</div>
+<script src="/js/embed.min.js?v=1.3.2"></script>
+<script src="//cdn.bootcss.com/marked/0.3.6/marked.min.js" async="async"></script>
+<script>
+var duoshuoQuery = {short_name:'azhutech', theme: 'none'};
+</script>
+
+    <!--//配置中仅启用友言时，导入相应代码 -->
+    
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+  </main>
+  <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true }</script>
+
+
+
+<div class="global-share" id="globalShare">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://azhu.tech/2017/04/06/hexo-mathjax/&title=《在Hexo中使用MathJax》 — LivingStone&pic=http://azhu.tech/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://azhu.tech/2017/04/06/hexo-mathjax/&title=《在Hexo中使用MathJax》 — LivingStone&source=azhu's blog" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://azhu.tech/2017/04/06/hexo-mathjax/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《在Hexo中使用MathJax》 — LivingStone&url=http://azhu.tech/2017/04/06/hexo-mathjax/&via=http://azhu.tech" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://azhu.tech/2017/04/06/hexo-mathjax/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABvUlEQVR42u3aS27DMAwFwNz/0u62QBvlkbSUBBitDEOJx14Q/OjxiNf1a/29v96Z3Ll54eLijrnXck0Qz+48u14bcHFxz3OfRYzqdRLs1v/z4re4uLgfzJ2kKesAh4uL+73c9c5J6oOLi/s53KT4WQempFFytFbDxcUdcPOkZN/1lv4uLi5ui3sVV/Ia+cik/HRcXNwj3Dyg9BKOpEwqPxcXF3czNw8x1ftJsVR9Oi4u7nluNaxMEppRRoaLi7uZW2135nuqL5m3VnFxcXdzqy2PHjFpo6z34+LivovbG39WWdV2yT8RFxcX9wh30h6d0MuviouLe5A7aXZsT2ueFT+4uLjbuOuBaG9cOk99oo+Fi4t7kLsOK5Okpzq2ebETFxd3MzcJHPkD8tdoNl5xcXEPcvPjEUnQ6Q1uCzNhXFzcg9xqGMrTmurxr3L3BRcX9ybuVVy91kbvE+Di4r6LOyldqiEpb7n2xr24uLj3cictzt6hrl7ahIuLe57ba3NMWiGjWg0XF/fjuXcVP1EKhYuL+7Xc+YD2xSgFFxf3CLdXqOQF0ryIwsXFPcmdhJXkWFX1kMdt/V1cXNwO9wdEH+Ixq0IWpQAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+  <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script src="/js/main.min.js?v=1.3.2"></script>
+
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.3.2"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+
+
+
+
+
+
+
+</body>
+</html>

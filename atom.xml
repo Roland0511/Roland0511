@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://azhu.tech/"/>
-  <updated>2017-02-27T16:50:19.000Z</updated>
+  <updated>2017-04-30T05:22:39.000Z</updated>
   <id>http://azhu.tech/</id>
   
   <author>
@@ -14,6 +14,99 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>在Hexo中使用MathJax</title>
+    <link href="http://azhu.tech/2017/04/06/hexo-mathjax/"/>
+    <id>http://azhu.tech/2017/04/06/hexo-mathjax/</id>
+    <published>2017-04-06T01:52:14.000Z</published>
+    <updated>2017-04-30T05:22:39.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="替换markdown-renderer"><a href="#替换markdown-renderer" class="headerlink" title="替换markdown renderer"></a>替换markdown renderer</h2><p>由于Markdown渲染器和latex渲染器冲突，公式中的特殊字符会首先被markdown渲染器转义，导致渲染错误。<br>所以首先替换hexo自带的Markdown渲染器插件。<br>这里推荐 <a href="https://github.com/sun11/hexo-renderer-kramed" target="_blank" rel="external">hexo-renderer-kramed</a> 这个插件，作者fork了 hexo-renderer-marked 项目，并且只对MathJax支持进行了改进，其他特性完全一致。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ npm uninstall hexo-renderer-marked --save</div><div class="line">$ npm install hexo-renderer-kramed --save</div></pre></td></tr></table></figure>
+<h2 id="安装MathJax"><a href="#安装MathJax" class="headerlink" title="安装MathJax"></a>安装MathJax</h2><ul>
+<li>方法1：手动修改主题使其支持mathjax<ul>
+<li>在theme的header中插入对MathJax CDN script的引用，并配置inline math</li>
+<li>在文章中用inline math插入公式</li>
+</ul>
+</li>
+<li><p>方法2：安装插件</p>
+<ul>
+<li><p>这里推荐<a href="https://github.com/akfish/hexo-math" target="_blank" rel="external">hexo-math</a>，这个插件实现了自动部署MathJax以及添加MathJax Tag。具体内容参见仓库的readme。</p>
+<ul>
+<li><p>安装：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-math --save</div></pre></td></tr></table></figure>
+</li>
+<li><p>初始化：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo math install</div></pre></td></tr></table></figure>
+</li>
+<li><p>使用：你可以直接使用 MathJax 的行内公式语法，但要记得在每个特殊符号前加一个\来将其转义。LaTeX包含大量的像\这样的特殊字符，这就给手动转义带来了极大的不便。这种情况下，你可以使用 math 的标签来让你解脱。</p>
+<ul>
+<li><p>单行标注：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$$ a = b + c $$.</div></pre></td></tr></table></figure>
+<p>效果： <script type="math/tex">a = b + c</script>.</p>
+</li>
+<li><p>多行标注：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$$</div><div class="line">\frac&#123;\partial u&#125;&#123;\partial t&#125;</div><div class="line">= h^2 \left( \frac&#123;\partial^2 u&#125;&#123;\partial x^2&#125; +</div><div class="line">\frac&#123;\partial^2 u&#125;&#123;\partial y^2&#125; +</div><div class="line">\frac&#123;\partial^2 u&#125;&#123;\partial z^2&#125;\right)</div><div class="line">$$</div></pre></td></tr></table></figure>
+<p>效果：</p>
+<script type="math/tex; mode=display">\frac{\partial u}{\partial t}= h^2 \left( \frac{\partial^2 u}{\partial x^2} +\frac{\partial^2 u}{\partial y^2} +\frac{\partial^2 u}{\partial z^2}\right)</script></li>
+<li><p>Tag：</p>
+<ul>
+<li><p>单行</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% math %&#125;\cos 2\theta = \cos^2 \theta - \sin^2 \theta =  2 \cos^2 \theta - 1 &#123;% endmath %&#125;</div></pre></td></tr></table></figure>
+  <span>$\cos 2\theta = \cos^2 \theta - \sin^2 \theta =  2 \cos^2 \theta - 1$</span><!-- Has MathJax -->
+</li>
+<li><p>多行</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123;% math %&#125;</div><div class="line">\begin&#123;aligned&#125;</div><div class="line">\dot&#123;x&#125; &amp; = \sigma(y-x) \\</div><div class="line">\dot&#123;y&#125; &amp; = \rho x - y - xz \\</div><div class="line">\dot&#123;z&#125; &amp; = -\beta z + xy</div><div class="line">\end&#123;aligned&#125;</div><div class="line">&#123;% endmath %&#125;</div></pre></td></tr></table></figure>
+  <span>$$\begin{aligned}
+\dot{x} &amp; = \sigma(y-x) \\
+\dot{y} &amp; = \rho x - y - xz \\
+\dot{z} &amp; = -\beta z + xy
+\end{aligned}$$</span><!-- Has MathJax -->
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>坑：切勿在_config.yml添加如下插件标签，如果添加了plugins标签，hexo将会不再自动搜索插件，需要自己手动将所有用到的插件添加在plugins中。</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">plugins:</div><div class="line">	- hexo-math</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;替换markdown-renderer&quot;&gt;&lt;a href=&quot;#替换markdown-renderer&quot; class=&quot;headerlink&quot; title=&quot;替换markdown renderer&quot;&gt;&lt;/a&gt;替换markdown renderer&lt;/h2&gt;&lt;p&gt;由于
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>部署博客的时候遇到的一些坑</title>
+    <link href="http://azhu.tech/2017/04/06/hexo-problems/"/>
+    <id>http://azhu.tech/2017/04/06/hexo-problems/</id>
+    <published>2017-04-06T01:52:14.000Z</published>
+    <updated>2017-04-06T01:52:14.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Hexo-主题无法正确显示"><a href="#Hexo-主题无法正确显示" class="headerlink" title="Hexo 主题无法正确显示"></a>Hexo 主题无法正确显示</h2><h1 id="如果是使用git进行部署的，需要在静态站点映射的仓库下添加一个-nojekyll-文件。来禁止使用jekyll。"><a href="#如果是使用git进行部署的，需要在静态站点映射的仓库下添加一个-nojekyll-文件。来禁止使用jekyll。" class="headerlink" title="如果是使用git进行部署的，需要在静态站点映射的仓库下添加一个[.nojekyll]文件。来禁止使用jekyll。"></a>如果是使用git进行部署的，需要在静态站点映射的仓库下添加一个[.nojekyll]文件。来禁止使用jekyll。</h1><h1 id="确保git项目仓库名称和用户id一致，否则会导致css文件无法正确加载，无论是用github-pages还是coding-pages。"><a href="#确保git项目仓库名称和用户id一致，否则会导致css文件无法正确加载，无论是用github-pages还是coding-pages。" class="headerlink" title="确保git项目仓库名称和用户id一致，否则会导致css文件无法正确加载，无论是用github pages还是coding pages。"></a>确保git项目仓库名称和用户id一致，否则会导致css文件无法正确加载，<em>无论是用github pages还是coding pages。</em></h1><h2 id="Test-Math"><a href="#Test-Math" class="headerlink" title="Test Math"></a>Test Math</h2><!-- ``` bash -->
+<script type="math/tex; mode=display">
+x = z*b</script><p>$ a = b + c $<br><!-- ``` --></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Hexo-主题无法正确显示&quot;&gt;&lt;a href=&quot;#Hexo-主题无法正确显示&quot; class=&quot;headerlink&quot; title=&quot;Hexo 主题无法正确显示&quot;&gt;&lt;/a&gt;Hexo 主题无法正确显示&lt;/h2&gt;&lt;h1 id=&quot;如果是使用git进行部署的，需要在静态站点
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Hexo 简单操作</title>
@@ -36,26 +129,6 @@
     <summary type="html">
     
       &lt;p&gt;&lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo主页&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;文档
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>部署博客的时候遇到的一些坑</title>
-    <link href="http://azhu.tech/2016/12/18/hexo-problems/"/>
-    <id>http://azhu.tech/2016/12/18/hexo-problems/</id>
-    <published>2016-12-17T16:10:03.000Z</published>
-    <updated>2016-12-17T16:10:03.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="Hexo-主题无法正确显示"><a href="#Hexo-主题无法正确显示" class="headerlink" title="Hexo 主题无法正确显示"></a>Hexo 主题无法正确显示</h2><p>#如果是使用git进行部署的，需要在静态站点映射的仓库下添加一个[.nojekyll]文件。来禁止使用jekyll。</p>
-<p>#确保git项目仓库名称和用户id一致，否则会导致css文件无法正确加载，*无论是用github pages还是coding pages。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;Hexo-主题无法正确显示&quot;&gt;&lt;a href=&quot;#Hexo-主题无法正确显示&quot; class=&quot;headerlink&quot; title=&quot;Hexo 主题无法正确显示&quot;&gt;&lt;/a&gt;Hexo 主题无法正确显示&lt;/h2&gt;&lt;p&gt;#如果是使用git进行部署的，需要在静态站点映射的仓
     
     </summary>
     
